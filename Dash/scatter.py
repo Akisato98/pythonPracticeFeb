@@ -1,7 +1,8 @@
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from numpy import numpy as np
+import numpy as np
 import plotly.graph_objs as go
 
 np.random.seed(1)
@@ -19,18 +20,32 @@ app.layout = html.Div([
   dcc.Graph(
     id='sample-scatter',
     figure={
-      'data': [
-        go.scatter(
+      'data':[
+        go.Scatter(
           x=x1,
           y=y1,
           mode='markers',
-          opacity=0.7,
+          opacity=0.4,
           marker={
-            'size': 15
+            'size':10
           },
           name='グループ1'
+        ),
+        go.Scatter(
+          x=x2,
+          y=y2,
+          mode='markers',
+          opacity=0.6,
+          marker={
+            'size':15
+          },
+          name='グループ2'
         )
-      ]
+      ],
+      'layout':go.Layout(
+        xaxis={'title':'x軸'},
+        yaxis={'title':'y軸'}
+      )
     }
   )
 ])
